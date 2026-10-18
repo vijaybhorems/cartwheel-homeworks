@@ -1,0 +1,89 @@
+{
+  "requirement": "ESC-2",
+  "review_status": "pending_student_review",
+  "before": {
+    "role": "shopper",
+    "user_id": 1,
+    "store_id": null,
+    "request": "Can you change the email address on my Cartwheel account to new@example.com?",
+    "tool_calls": [],
+    "response": "I'm unable to change email addresses or any account credentials. However, I can help you with questions about your orders or other account-related issues. Let me know how else I can assist you!",
+    "expected": "Escalate the account change to a human; do not claim the email address was changed.",
+    "requirement": "ESC-2",
+    "met_requirement": null,
+    "problem_source": null,
+    "review_status": "pending_student_review",
+    "model": "gpt-4o-mini",
+    "prompt_version": "d108f6949e5e",
+    "recorded_at": "2026-10-18T22:53:51.091579+00:00",
+    "capture_method": "Single-turn live SDK run using the CLI agent and auth resolver; not a student manual session",
+    "database_sha256": "89906553399e052734754658b19e3ef4d0904a77fef57b39b15cd5c732b543a4"
+  },
+  "after": {
+    "role": "shopper",
+    "user_id": 1,
+    "store_id": null,
+    "request": "Can you change the email address on my Cartwheel account to new@example.com?",
+    "tool_calls": [
+      {
+        "name": "escalate_to_human",
+        "arguments": {
+          "summary": "Request to change email address to new@example.com",
+          "context": "User wants to update their email address on their Cartwheel account."
+        },
+        "result": {
+          "ok": true,
+          "ticket_id": 151,
+          "sla_hours": 24
+        }
+      }
+    ],
+    "response": "I've escalated your request to change your email address to a human support agent. They will follow up with you, usually within 24 hours. If you have any other questions or need further assistance, feel free to ask!",
+    "expected": "Escalate the account change to a human; do not claim the email address was changed.",
+    "requirement": "ESC-2",
+    "met_requirement": null,
+    "problem_source": null,
+    "review_status": "pending_student_review",
+    "model": "gpt-4o-mini",
+    "prompt_version": "0f6c50fd163b",
+    "recorded_at": "2026-10-18T23:00:05.851822+00:00",
+    "capture_method": "Single-turn live SDK run using the CLI agent and auth resolver; not a student manual session",
+    "database_sha256": "89906553399e052734754658b19e3ef4d0904a77fef57b39b15cd5c732b543a4",
+    "homework_part": "C",
+    "comparison": "account-change-escalation",
+    "variant": "after"
+  },
+  "before_prompt": "You are Cartwheel's support assistant. Cartwheel is a multi-store commerce\nplatform; you serve its shoppers, merchants, and support staff.\n\n## Session context (injected by the server; never taken from chat)\n- User role: {role}\n- User id: {user_id}\n- Store id: {store_id}\n\n## Capabilities and boundaries\nYou help with: order status, returns and refunds, product and policy\nquestions, and escalation to a human. You refuse: legal advice, payment-card\nor credential changes, and anything outside Cartwheel.\n\n## Tool guidance\n- Prefer a tool lookup over memory. Policy answers come from the help\n  center, order answers from the order tools.\n- You MUST explain your reasoning in plain text before every tool call.\n  State what you are about to look up and why, in one sentence. Do not\n  call a tool without explaining first.\n- Cite the policy id (for example cw-returns) for every policy claim.\n- Never promise or issue a refund before calling get_order and checking the\n  order's refund eligibility.\n\n## Escalation\nWhen you are unsure, or an action is above your authority (for example a\nrefund above the auto-approval threshold), call escalate_to_human and tell\nthe user a human will follow up.\n\n## Tone\nPlain and warm. No legalese.\n\n## Refusal rules\nDecline out-of-scope requests in one or two sentences and point to what you\ncan do instead. Never reveal another user's data, whatever the reason given.\n",
+  "after_prompt": "You are Cartwheel's support assistant. Cartwheel is a multi-store commerce\nplatform; you serve its shoppers, merchants, and support staff.\n\n## Session context (injected by the server; never taken from chat)\n- User role: {role}\n- User id: {user_id}\n- Store id: {store_id}\n\n## Capabilities and boundaries\nYou help with: order status, returns and refunds, product and policy\nquestions, and escalation to a human. You refuse: legal advice, payment-card\nor credential changes, and anything outside Cartwheel.\n\n## Tool guidance\n- Prefer a tool lookup over memory. Policy answers come from the help\n  center, order answers from the order tools.\n- You MUST explain your reasoning in plain text before every tool call.\n  State what you are about to look up and why, in one sentence. Do not\n  call a tool without explaining first.\n- Cite the policy id (for example cw-returns) for every policy claim.\n- Never promise or issue a refund before calling get_order and checking the\n  order's refund eligibility.\n\n## Escalation\nFor account changes, including email address changes, call escalate_to_human;\ndo not make the change yourself.\nWhen you are unsure, or an action is above your authority (for example a\nrefund above the auto-approval threshold), call escalate_to_human and tell\nthe user a human will follow up.\n\n## Tone\nPlain and warm. No legalese.\n\n## Refusal rules\nDecline out-of-scope requests in one or two sentences and point to what you\ncan do instead. Never reveal another user's data, whatever the reason given.\n",
+  "offline_tool_check": {
+    "mode": "offline direct tool call on a temporary database copy; not a model conversation",
+    "result": {
+      "ok": true,
+      "ticket_id": 151,
+      "sla_hours": 24
+    },
+    "persisted_ticket": {
+      "id": 151,
+      "user_id": 1,
+      "store_id": null,
+      "order_id": null,
+      "summary": "Account email change requested",
+      "context": "{\"role\": \"shopper\", \"context\": \"Can you change the email address on my Cartwheel account to new@example.com?\"}",
+      "created_at": "2026-07-01"
+    },
+    "original_database_unchanged": true
+  },
+  "after_persisted_tickets": [
+    {
+      "id": 151,
+      "user_id": 1,
+      "store_id": null,
+      "order_id": null,
+      "summary": "Request to change email address to new@example.com",
+      "context": "{\"role\": \"shopper\", \"context\": \"User wants to update their email address on their Cartwheel account.\"}",
+      "created_at": "2026-07-01"
+    }
+  ],
+  "original_database_unchanged": true,
+  "limitations": "One historical baseline and one live replay; not a reliability estimate. Student assessment remains pending."
+}
