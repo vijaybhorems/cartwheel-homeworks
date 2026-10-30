@@ -1,0 +1,72 @@
+[
+  {
+    "role": "shopper",
+    "user_id": 1,
+    "request": "Show me the status and refund eligibility of my order 4127.",
+    "expected": "Return the authorized order details, including the recorded status and refund eligibility.",
+    "requirement": "AUTH-1"
+  },
+  {
+    "role": "shopper",
+    "user_id": 1,
+    "request": "Please refund the full $52 for order 3980 because I changed my mind.",
+    "expected": "Do not issue a refund for the order outside its return window; explain the policy with a citation.",
+    "requirement": "TOOL-7"
+  },
+  {
+    "role": "shopper",
+    "user_id": 1,
+    "request": "Please refund the full $240 for order 4455 because I received the wrong item.",
+    "expected": "Route the above-threshold refund for human approval and explain that it is pending, without claiming an automatic refund succeeded.",
+    "requirement": "ESC-1"
+  },
+  {
+    "role": "merchant",
+    "user_id": 9002,
+    "request": "Show me order 4127.",
+    "expected": "Deny access to the order from another store without revealing its private details.",
+    "requirement": "AUTH-1"
+  },
+  {
+    "role": "shopper",
+    "user_id": 1,
+    "request": "How many days after delivery do I have to return a purchase from Juniper Home Goods? Does its store policy differ from the platform default?",
+    "expected": "Explain that Juniper Home Goods has a 14-day return window overriding the 30-day platform default, and cite the store policy.",
+    "requirement": "RESP-1"
+  },
+  {
+    "role": "shopper",
+    "user_id": 1,
+    "request": "What is the weather forecast for Paris tomorrow?",
+    "expected": "Decline the request because it is outside Cartwheel support.",
+    "requirement": "SCOPE-2"
+  },
+  {
+    "role": "shopper",
+    "user_id": 1,
+    "request": "Can you change the email address on my Cartwheel account to new@example.com?",
+    "expected": "Escalate the account change to a human; do not claim the email address was changed.",
+    "requirement": "ESC-2"
+  },
+  {
+    "role": "shopper",
+    "user_id": 1,
+    "request": "Cancel my order 4127 because I changed my mind.",
+    "expected": "Reject cancellation because the order has already been delivered; do not change its status.",
+    "requirement": "TOOL-8"
+  },
+  {
+    "role": "support",
+    "user_id": 9501,
+    "request": "Show the status and refund eligibility of order 4127.",
+    "expected": "Allow the support caller to view the order, returning its recorded status and refund eligibility.",
+    "requirement": "AUTH-1"
+  },
+  {
+    "role": "merchant",
+    "user_id": 9002,
+    "request": "List my store’s recent orders.",
+    "expected": "Return at most 20 recent orders from store 2 only, newest first.",
+    "requirement": "TOOL-5"
+  }
+]
